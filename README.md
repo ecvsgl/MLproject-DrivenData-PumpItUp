@@ -6,7 +6,7 @@ First of all, a great shout-out to the other co-owner of this project, <a href="
 
 This is a multi-class classification problem regarding water pumps in Tanzania, where the goal is to classify water pumps' status either as: "functional", "needs repair", or "nonfunctional". The data is provided by the Tanzanian Ministry of Water. If a good statistical model is built, pump maintenance can be improved, which would lead to better access to water.
 
-![](RackMultipart20230523-1-jin9lm_html_86e043b01d91e024.png)
+![](https://github.com/ecvsgl/MLproject-DrivenData-PumpItUp/src/img/Picture1.png)
 
 **Figure 1:** Distribution of water pump status in the training dataset.
 
