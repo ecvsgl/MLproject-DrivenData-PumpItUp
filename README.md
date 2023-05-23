@@ -6,7 +6,7 @@ First of all, a great shout-out to the other co-owner of this project, <a href="
 
 This is a multi-class classification problem regarding water pumps in Tanzania, where the goal is to classify water pumps' status either as: "functional", "needs repair", or "nonfunctional". The data is provided by the Tanzanian Ministry of Water. If a good statistical model is built, pump maintenance can be improved, which would lead to better access to water.
 
-![](https://github.com/ecvsgl/MLproject-DrivenData-PumpItUp/src/img/Picture1.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture1.png)
 
 **Figure 1:** Distribution of water pump status in the training dataset.
 
@@ -20,21 +20,23 @@ In training data set there were several number of numerical columns containing h
 
 #### Longitude, Latitude and GPS Height
 
-![](RackMultipart20230523-1-jin9lm_html_759e8e64440133ce.png) ![](RackMultipart20230523-1-jin9lm_html_d859eee8bb7137c9.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture2.png) ![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture3.png)
 
 **Figure 2 & 3:** Histograms GPS Height and Longitude in the training dataset.
 
 In longitude and gps\_height columns there were high number 0 values. For Tanzania, these geographical values can not be 0. Whereas in latitude column, there were data points lying outside of Tanzania, on the ocean. Thus, zero and improper latitude values are replaced by NaN and then imputed by using mean value of each column for each unique grouping of 'basin', 'region', 'lga', 'ward', 'subvillage' variables.
 
-![](RackMultipart20230523-1-jin9lm_html_5df425736f15e494.png)After value imputation, gps\_height plot shows that in lower heights of Tanzania the ratio of non functional pumps are higher than higher ratios. The functionality between 1000 and 2000 is better.
+After value imputation, gps\_height plot shows that in lower heights of Tanzania the ratio of non functional pumps are higher than higher ratios. The functionality between 1000 and 2000 is better.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture4.png)
 
 **Figure 4:** Histogram of imputed GPS Height in training dataset, grouped by pump status.
-
-![](RackMultipart20230523-1-jin9lm_html_e2b4b044a7bdab38.png)
 
 **Mapping Coordinates**
 
 Creating a scatter plot with longitude and latitude, we can see that the number of functional water pumps is higher in some areas, while in some areas it is less, in some areas there are no records at all. The regions, latitude, longitude and gps height is in relation with pump functionality.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture5.png)
 
 **Figure 5:** Scatter plot of imputed longitude and latitude in training dataset, grouped by pump status.
 
@@ -42,7 +44,9 @@ Creating a scatter plot with longitude and latitude, we can see that the number 
 
 To handle missing values in this column, computed probability distribution of construction year and replaced missing values with random samples drawn from the normalized probability distribution and categorized all values to decades at the end.
 
-![](RackMultipart20230523-1-jin9lm_html_894a886c593a884f.png)Not surprisingly, the older pumps have a higher ratio in non-functioning pumps compared to the newer water pumps. Besides, more than half of the water pump are constructed last 20 years.
+Not surprisingly, the older pumps have a higher ratio in non-functioning pumps compared to the newer water pumps. Besides, more than half of the water pump are constructed last 20 years.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture6.png)
 
 **Figure 6:** Bar chart of construction year in training dataset, grouped by pump status.
 
@@ -54,44 +58,57 @@ In population, several observations had missing values. Similar to the method st
 
 #### Quantity Group
 
-![](RackMultipart20230523-1-jin9lm_html_4b90cfa9ec40c1d5.png)The distribution of classes among variables are relatively even, except dry and unknown water pumps are largely non-functional.
+The distribution of classes among variables are relatively even, except dry and unknown water pumps are largely non-functional.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture7.png)
 
 **Figure 7:** Bar chart of quantity group in training dataset, grouped by pump status.
 
 #### Quality Group
 
-![](RackMultipart20230523-1-jin9lm_html_65eb01fd8106b9fc.png)Over 50k of waterpumps have good quality of water. However, people cannot reach this quality type due to half of these are non-functional waterpumps. Unlike the others, the rate of non-functional waterpumps in unknown variable is very high.
+Over 50k of waterpumps have good quality of water. However, people cannot reach this quality type due to half of these are non-functional waterpumps. Unlike the others, the rate of non-functional waterpumps in unknown variable is very high.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture8.png)
 
 **Figure 8:** Bar chart of quality group in training dataset, grouped by pump status.
 
 #### Waterpoint Type
 
-![](RackMultipart20230523-1-jin9lm_html_766936ddfec44771.png)According to waterpoint types of water pump, other class have too much more non-functional pumps than functional. Almost half of waterpoint\_type is communal standpipe and more than half of this type is functional.
+According to waterpoint types of water pump, other class have too much more non-functional pumps than functional. Almost half of waterpoint\_type is communal standpipe and more than half of this type is functional.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture9.png)
 
 **Figure 9:** Bar chart of waterpoint type in training dataset, grouped by pump status.
 
 #### Source Class
 
-The distribution of classes among all variables are relatively ev ![](RackMultipart20230523-1-jin9lm_html_aa32bc5cd2e52757.png)en. But, nearly 50k of water pumps use groundwater.
+The distribution of classes among all variables are relatively even. But, nearly 50k of water pumps use groundwater.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture10.png)
 
 **Figure 10:** Bar chart of source class in training dataset, grouped by pump status.
 
 #### Extraction Type
 
-![](RackMultipart20230523-1-jin9lm_html_3306e2b1a3a2dd0c.png)According to extraction types of water pump, other and mono class may not well maintained, and they have much more non-functional pumps than functional. Almost half of extraction class is gravity and these are mostly functional waterpumps.
+According to extraction types of water pump, other and mono class may not well maintained, and they have much more non-functional pumps than functional. Almost half of extraction class is gravity and these are mostly functional waterpumps.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture11.png)
 
 **Figure 11:** Bar chart of extraction type in training dataset, grouped by pump status.
 
 #### Recorded Date
 
-![](RackMultipart20230523-1-jin9lm_html_442050d4a9302e6b.png)We extracted record month from date\_recorded column to see season effect. And, the ratio of functional water pumps in spring season records is slightly higher than other months. It may be a proof of season effect in records. To observe this in the analysis, we separated the date data into three numerical columns of DD-MM-YYYY.
+We extracted record month from date\_recorded column to see season effect. And, the ratio of functional water pumps in spring season records is slightly higher than other months. It may be a proof of season effect in records. To observe this in the analysis, we separated the date data into three numerical columns of DD-MM-YYYY.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture12.png)
 
 **Figure 12:** Bar chart of recordMonth in training dataset, grouped by pump status.
 
 #### Payment
 
-W ![](RackMultipart20230523-1-jin9lm_html_db490e7ee11b2ee4.png)
- e converted payment data to binary where never pay is 0, and other cases as 1 for ease of analysis. The ratio of functional water pumps with payment is higher than no payment.
+We converted payment data to binary where never pay is 0, and other cases as 1 for ease of analysis. The ratio of functional water pumps with payment is higher than no payment.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture13.png)
 
 **Figure 13:** Bar chart of payment in training dataset, grouped by pump status.
 
@@ -99,7 +116,9 @@ W ![](RackMultipart20230523-1-jin9lm_html_db490e7ee11b2ee4.png)
 
 _Permit, Public Meeting, Scheme\_Management_ _columns seems to have 5-6% missing. "__scheme\_management"_ , "_permit"_, "public meeting" were highly orrelated with _management_ with a few exceptions. Therefore, they are grouped by management and filled by respective group's mode. At the end, permit and public meeting are binarized and false columns were dropped.
 
-![](RackMultipart20230523-1-jin9lm_html_8d30e633d7c28434.png) ![](RackMultipart20230523-1-jin9lm_html_ebf1bb97e4929c3e.png)Scheme management and public meeting columns have imbalanced distribution.
+Scheme management and public meeting columns have imbalanced distribution.
+
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture14.png)  ![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture15.png)
 
 **Figure 14 & 15:** Bar charts of scheme\_management (left) and public meeting (right) in training dataset, grouped by pump status.
 
@@ -116,7 +135,7 @@ Some of the columns stated below are dropped for different reasons:
 - _Similar to above, WaterQuality/Quality Group , Quantity/Quantity group, Management/Management Group, Region/RegionCode, Source/SourceType/SourceClass, WaterpointType/Group, Payment/PaymentType_ were columns stating the same detail for observations and were repeating themselves. Thus, these repetitions are dropped.
 - _Scheme\_name__dropped considering that 47% missing data._
 
-![](RackMultipart20230523-1-jin9lm_html_6d2575ca9b471046.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture16.png)
 
 **Figure 16:** Chart of columns in training dataset having missing values, prior to imputation.
 
@@ -154,13 +173,13 @@ For KNN, we had to select a K hyperparameter, which governs the number of points
 
 Charting the error rate for K values in between range 1 and 10, it was observed that K=8 had the minimum error rate thus K=8 is selected.
 
-![](RackMultipart20230523-1-jin9lm_html_9aeb379135ba5a90.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture17.png)
 
 **Figure 17:** Error Rate per K values in KNN model trials.
 
 Upon analysis of KNN model, confusion matrix provided the results below. 0.51 test set accuracy was quite low, therefore we had to search for alternative model types.
 
-![](RackMultipart20230523-1-jin9lm_html_67d14cf35e7c104e.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture18.png)
 
 **Figure 18:** Classification report for KNN model based on K=8.
 
@@ -168,7 +187,7 @@ Upon analysis of KNN model, confusion matrix provided the results below. 0.51 te
 
 As our second model, we have used a multiclass logistic regression model. We used a multiclass model because the regular "logit" model under statsmodels was not supporting multiple classifiers in the target column (in this case, status\_group of the pumps).
 
-![](RackMultipart20230523-1-jin9lm_html_ca326149c7a301a5.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture19.png)
 
 **Figure 19:** Classification report for Logistic Regression model.
 
@@ -178,7 +197,7 @@ As seen in the figure above, LogisticRegression model has achieved a 71% accurac
 
 Gradient Boosting is a known model type in classification and regression alike. We have decided to use the Gradient Boosting Classifier model in a hope to increase accuracy of the model.
 
-![](RackMultipart20230523-1-jin9lm_html_ca54bb378f76ea13.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture20.png)
 
 **Figure 20:** Confusion Matrix and classification report for Gradient Boosting model.
 
@@ -188,7 +207,7 @@ As it is seen from the figure above, we have achieved an accuracy of 74%, ahead 
 
 XGBoost (eXtreme Gradient Boosting) is an improved version of the Gradient Boosting model using GB with decision trees and is superior in terms of speed, accuracy, data handling and so on. In this project, we expected an accuracy score above the Gradient Boosting model.
 
-![](RackMultipart20230523-1-jin9lm_html_10f9e47c4dcfbd1e.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture21.png)
 
 **Figure 21:** Confusion Matrix and classification report for XGBoost model.
 
@@ -198,7 +217,7 @@ As a result, we have achieved an accuracy of 78%, much higher than Gradient Boos
 
 As the 5th and final model, we decided to opt for a Random Forest Classifier model. We have trained a Random Forest Classifier model having maximum depth of the trees in the forest to 20 and used it to make predictions on the test data. In this case, our output showed the accuracy of the test set as 80%, achieving our best test accuracy score at all.
 
-![](RackMultipart20230523-1-jin9lm_html_b5171cec2355052c.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture22.png)
 
 **Figure 22:** Classification report of Random Forest Classifier model.
 
@@ -206,6 +225,6 @@ As the 5th and final model, we decided to opt for a Random Forest Classifier mod
 
 To sum up, we carefully explored and preprocessed the data, engineered informative features, and experimented with different classification models to see which one works best for this problem. Our best model, Random Forest Classifier, predicted the functionality of the pumps with an accuracy of 80%.
 
-![](RackMultipart20230523-1-jin9lm_html_5e159c51a2096d81.png)
+![](https://raw.githubusercontent.com/ecvsgl/MLproject-DrivenData-PumpItUp/master/src/img/Picture23.png)
 
 **Figure 23:** Submission Score of Drivendata for results of our Random Forest Classifier model.
