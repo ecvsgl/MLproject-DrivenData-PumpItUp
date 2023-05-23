@@ -1,5 +1,7 @@
 # ML Project for "Pump it Up: Data Mining the Water Table" (competition hosted by DrivenData.org) 
 
+First of all, a great shout-out to the other co-owner of this project, github.com/zhrgns ! We put our effort to this analysis collectively.
+
 ## Problem Description
 
 This is a multi-class classification problem regarding water pumps in Tanzania, where the goal is to classify water pumps' status either as: "functional", "needs repair", or "nonfunctional". The data is provided by the Tanzanian Ministry of Water. If a good statistical model is built, pump maintenance can be improved, which would lead to better access to water.
