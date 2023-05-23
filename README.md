@@ -1,6 +1,6 @@
 # ML Project for "Pump it Up: Data Mining the Water Table" (competition hosted by DrivenData.org) 
 
-First of all, a great shout-out to the other co-owner of this project, github.com/zhrgns ! We put our effort to this analysis collectively.
+First of all, a great shout-out to the other co-owner of this project, <a href="github.com/zhrgns">Zehra</a>! We put our effort on this analysis collectively.
 
 ## Problem Description
 
